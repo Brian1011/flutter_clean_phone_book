@@ -3,7 +3,7 @@ import 'package:riverpod/riverpod.dart';
 import '../domain/domain.dart';
 import 'repository_provider.dart';
 
-final getContactProvider = Provider<GetContacts>((ref) {
+final getContactsProvider = Provider<GetContacts>((ref) {
   final repository = ref.watch(contactRepositoryProvider);
   return GetContacts(repository);
 });
