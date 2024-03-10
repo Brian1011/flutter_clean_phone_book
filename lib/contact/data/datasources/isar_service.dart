@@ -1,5 +1,4 @@
-import 'package:phone_book/contact/domain/entities/contact.dart';
-
+import '../../domain/entities/entity.dart';
 import 'contact_local_datasource.dart';
 
 class IsarService implements ContactLocalDataSource {
