@@ -7,13 +7,35 @@ class ContactScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final getContacts = ref.watch(getContactsProvider);
+    final getContactsAsync = ref.watch(getContactsProvider);
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Contacts'),
       ),
-      body: Container(),
+      body: Container(
+          child: getContactsAsync.when(
+              data: (contacts) => ListView.builder(
+                  itemCount: contacts.length,
+                  itemBuilder: (context, index) {
+                    final contact = contacts[index];
+                    return ListTile(
+                      title: Text(contact.name),
+                      subtitle: Text(contact.phone),
+                      trailing: IconButton(
+                        icon: const Icon(Icons.delete),
+                        onPressed: () {
+                          // ref.read(deleteContactProvider(contact.id));
+                        },
+                      ),
+                    );
+                  }),
+              error: (error, stackTrace) {
+                return Center(
+                  child: Text('Error: $error'),
+                );
+              },
+              loading: () => const Center(child: CircularProgressIndicator()))),
     );
   }
 }

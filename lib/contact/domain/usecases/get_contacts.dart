@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
+import 'package:phone_book/core/exceptions/failure.dart';
 
-import '../../../core/core.dart';
 import '../domain.dart';
 
 class GetContacts {
@@ -9,6 +9,6 @@ class GetContacts {
   GetContacts(this.repository);
 
   Future<Either<Failure, List<Contact>>> call() async {
-    return await repository.getContacts();
+    return repository.getContacts();
   }
 }

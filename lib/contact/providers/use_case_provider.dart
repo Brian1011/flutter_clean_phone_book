@@ -1,11 +1,11 @@
-import 'package:riverpod/riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../domain/domain.dart';
 import 'repository_provider.dart';
 
-final getContactsProvider = Provider<GetContacts>((ref) {
-  final repository = ref.watch(contactRepositoryProvider);
-  return GetContacts(repository);
+final getContactsProvider =
+    AsyncNotifierProvider<GetContactsNotifier, List<Contact>>(() {
+  return GetContactsNotifier();
 });
 
 final addContactProvider = Provider<AddContact>((ref) {
