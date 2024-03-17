@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'contact/contact.dart';
+import 'features/features.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
